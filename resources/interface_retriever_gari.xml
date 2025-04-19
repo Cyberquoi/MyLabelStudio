@@ -1,0 +1,92 @@
+<View>
+
+  <Header value="&lt;&lt; Informations &gt;&gt;"/>
+
+  <View style="color:darkgreen;font-style:italic;">
+
+    <!-- Libellé du document -->
+    <Text name="ask_name" value="Nom du document" />
+
+    <!-- Champ de saisie -->
+    <TextArea name="document_name"
+              toName="text"
+              perRegion="false"
+              required="true"
+              placeholder="Entrez le nom du document"
+              maxSubmissions="1" />
+
+    <!-- Identifiant du document -->
+    <Text name="ask_id" value="Identifiant du document"/>
+
+    <!-- Identifiant du document (champ de saisie) -->
+    <TextArea name="document_id" toName="text"
+              perRegion="false"
+              required="true"
+              placeholder="Entrez un identifiant unique pour le document (voir référentiel RAG)"
+              maxSubmissions="1"/>
+  </View>
+
+  <Collapse>
+
+    <Panel value="Métadata du document">
+
+      <!-- Type de document (checkbox) -->
+      <View style="font-size:inherit;font-size:16px;font-style:italic;color:darkgreen;">
+        <Text name="ask_source" value="Veuillez sélectionner la source documentaire"/>
+      </View>
+      <Choices name="document_source"
+               toName="text"
+               perRegion="false"
+               showInLine="false"
+               required="true">
+        <Choice value="ARI" alias="ari"/>
+        <Choice value="Mes Fiches" alias="mes_fiches"/>
+        <Choice value="Reflex" alias="reflex"/>
+        <Choice value="Autre" alias="autre"/>
+      </Choices>
+
+      <!-- Périmètre métier (checkbox) -->
+      <View style="font-size:inherit;font-size:16px;font-style:italic;color:darkgreen;">
+        <Text name="ask_business_scope" value="Veuillez sélectionner le périmètre métier"/>
+      </View>
+      <Choices name="document_business_scope"
+               toName="text"
+               perRegion="false"
+               showInLine="false"
+               required="true">
+        <Choice value="Retail Service" alias="retail_service"/>
+        <Choice value="Périmètre Retail" alias="retail"/>
+        <Choice value="Autre" alias="autre"/>
+      </Choices>
+
+    </Panel>
+
+  </Collapse>
+
+
+
+<Header value="&lt;&lt; Annotations &gt;&gt;"/>
+
+  <!-- Liste des labels -->
+  <View style="font-size:inherit;font-size:16px;font-style:italic;color:red;">
+  	<Text name="ask_labeliser" value="Veuillez sélectionnez la question ci-dessous puis annoter le/les extrait(s) de texte qui y répond(ent)"/>
+  </View>
+  <Filter toName="answer" minlength="0" name="filter"/>
+  <Labels name="answer" toName="text" showInline="true">
+    <Label value="Q001| Quelle est la date de l’événement ?" background="#FFA39E"/>
+    <Label value="Q002| Qui est impliqué ?" background="#FFD666"/>
+    <Label value="Q003|: Où cela s'est-il produit ?" background="#91D5FF"/>
+    <Label value="Q004| Quelle est la cause de l’événement ?" background="#B7EB8F"/>
+    <Label value="Q005| Quelles sont les conséquences ?" background="#D3ADF7"/>
+    <Label value="Q006| Quelle organisation est responsable ?" background="#FF85C0"/>
+    <Label value="Q007| Quel est le contexte ?" background="#A7E8BD"/>
+    <Label value="Q008| Quelle a été la réaction du public ?" background="#FFC069"/>
+    <Label value="Q009| Quels chiffres sont mentionnés ?" background="#FF9C6E"/>
+    <Label value="Q010| Quelle est la suite prévue ?" background="#69C0FF"/>
+    <Label value="Q012| Hllo Word !?" background="#69C0FF"/>
+  </Labels>
+
+  <!-- Texte à annoter -->
+  <Text name="text" value="$text" granularity="word"/>
+
+</View>
